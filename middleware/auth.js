@@ -25,8 +25,15 @@ function checkEmployee(req, res, next) {
   return res.status(401).json({ err: 'Not Authorized' })
 }
 
+function checkOwner(req, res, next) {
+  //Owner role === 900
+  if (req.user && req.user.role === 900 ) return next()
+  return res.status(401).json({ err: 'Not Authorized' })
+}
+
 export { 
   decodeUserFromToken, 
   checkAuth,
   checkEmployee,
+  checkOwner
 }

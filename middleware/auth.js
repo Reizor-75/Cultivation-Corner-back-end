@@ -19,4 +19,14 @@ function checkAuth(req, res, next) {
   return req.user ? next() : res.status(401).json({ err: 'Not Authorized' })
 }
 
-export { decodeUserFromToken, checkAuth }
+function checkEmployee(req, res, next) {
+  // Employee role === 500
+  if (req.user && req.user.role === 500 ) return next()
+  return res.status(401).json({ err: 'Not Authorized' })
+}
+
+export { 
+  decodeUserFromToken, 
+  checkAuth,
+  checkEmployee,
+}

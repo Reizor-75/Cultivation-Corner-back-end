@@ -7,12 +7,12 @@ const router = Router()
 
 /*---------- Public Routes ----------*/
 router.get('/', productsCtrl.index)
-router.post('/newProduct', productsCtrl.create)
-router.put('/:productId', productsCtrl.update)
-router.delete('/:productId', productsCtrl.delete)
 
 /*---------- Protected Routes ----------*/
 router.use(auth.decodeUserFromToken)
+router.post('/newProduct', auth.checkEmployee, productsCtrl.create)
+router.put('/:productId', auth.checkEmployee, productsCtrl.update)
+router.delete('/:productId', auth.checkEmployee, productsCtrl.delete)
 
 
 export { router }

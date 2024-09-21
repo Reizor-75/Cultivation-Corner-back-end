@@ -36,8 +36,20 @@ async function update(req, res){
   }
 }
 
+async function deleteProduct(req, res){
+  try {
+    const product = await Product.findByIdAndDelete(req.params.productId)
+    res.status(200).json(product)
+  } 
+  catch (err){    
+    console.log(err)
+    res.status(500).json(err)
+  }
+}
+
 export {
   index,
   create,
   update,
+  deleteProduct as delete,
 }

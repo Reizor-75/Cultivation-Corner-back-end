@@ -7,6 +7,7 @@ const router = Router()
 
 /*---------- Public Routes ----------*/
 router.get('/', inventorysCtrl.index)
+router.post('/newInventory', inventorysCtrl.create)
 
 /*---------- Protected Routes ----------*/
 router.use(auth.decodeUserFromToken)

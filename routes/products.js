@@ -1,14 +1,14 @@
 import { Router } from 'express'
 import * as auth from '../middleware/auth.js'
 
-import * as inventorysCtrl from '../controllers/inventorys.js'
+import * as productsCtrl from '../controllers/products.js'
 
 const router = Router()
 
 /*---------- Public Routes ----------*/
-router.get('/', inventorysCtrl.index)
-router.post('/newInventory', inventorysCtrl.create)
-router.put('/:inventoryId', inventorysCtrl.update)
+router.get('/', productsCtrl.index)
+router.post('/newProduct', productsCtrl.create)
+router.put('/:productId', productsCtrl.update)
 
 /*---------- Protected Routes ----------*/
 router.use(auth.decodeUserFromToken)

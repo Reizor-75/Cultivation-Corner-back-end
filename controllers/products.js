@@ -1,9 +1,9 @@
-import { Inventory } from '../models/inventory.js'
+import { Product } from '../models/product.js'
 
 async function index(req, res){
   try {
-    const workshops = await Inventory.find({})
-    res.status(200).json(workshops)
+    const product = await Product.find({})
+    res.status(200).json(product)
   } catch (error) {
     console.log(error)
     res.status(500).json(error)
@@ -12,8 +12,8 @@ async function index(req, res){
 
 async function create(req, res){
   try{
-    const inventory = await Inventory.create(req.body)
-    res.status(201).json(inventory)
+    const product = await Product.create(req.body)
+    res.status(201).json(product)
   }
   catch (err){    
     console.log(err)
@@ -23,12 +23,12 @@ async function create(req, res){
 
 async function update(req, res){
   try{
-    const inventory = await Inventory.findByIdAndUpdate(
-      req.params.inventoryId,
+    const product = await Product.findByIdAndUpdate(
+      req.params.productId,
       req.body,
       { new: true }
     )
-    res.status(200).json(inventory)
+    res.status(200).json(product)
   }
   catch (err){    
     console.log(err)

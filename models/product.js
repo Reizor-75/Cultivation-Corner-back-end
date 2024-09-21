@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 
 const Schema = mongoose.Schema
 
-const inventorySchema = new Schema({
+const productSchema = new Schema({
   productName: { type: String, required: true },
   quantity: { type:Number,  min: 0, default: 0},
   price: { type: Number, required: true},
@@ -15,6 +15,6 @@ const inventorySchema = new Schema({
   timestamps: true,
 })
 
-const Inventory = mongoose.model('inventory', inventorySchema)
+const Product = mongoose.model('product', productSchema)
 
-export { Inventory }
+export { Product }

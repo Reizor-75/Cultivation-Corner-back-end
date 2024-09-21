@@ -8,6 +8,7 @@ const router = Router()
 /*---------- Public Routes ----------*/
 router.get('/', inventorysCtrl.index)
 router.post('/newInventory', inventorysCtrl.create)
+router.put('/:inventoryId', inventorysCtrl.update)
 
 /*---------- Protected Routes ----------*/
 router.use(auth.decodeUserFromToken)

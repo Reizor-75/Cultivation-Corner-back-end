@@ -24,7 +24,7 @@ async function create(req, res){
 async function update(req, res){
   try{
     const inventory = await Inventory.findByIdAndUpdate(
-      req.params.requestId,
+      req.params.inventoryId,
       req.body,
       { new: true }
     )

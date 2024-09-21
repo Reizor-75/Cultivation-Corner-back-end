@@ -17,11 +17,27 @@ async function create(req, res){
   }
   catch (err){    
     console.log(err)
-      res.status(500).json(err)
-    }
+    res.status(500).json(err)
+  }
+}
+
+async function update(req, res){
+  try{
+    const inventory = await Inventory.findByIdAndUpdate(
+      req.params.requestId,
+      req.body,
+      { new: true }
+    )
+    res.status(200).json(inventory)
+  }
+  catch (err){    
+    console.log(err)
+    res.status(500).json(err)
+  }
 }
 
 export {
   index,
   create,
+  update,
 }

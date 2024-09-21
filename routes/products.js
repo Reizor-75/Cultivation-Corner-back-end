@@ -9,6 +9,7 @@ const router = Router()
 router.get('/', productsCtrl.index)
 router.post('/newProduct', productsCtrl.create)
 router.put('/:productId', productsCtrl.update)
+router.delete('/:productId', productsCtrl.delete)
 
 /*---------- Protected Routes ----------*/
 router.use(auth.decodeUserFromToken)

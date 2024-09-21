@@ -1,4 +1,4 @@
-import { Inventory, Inventory } from "../models/inventory"; 
+import { Inventory } from '../models/inventory.js'
 
 async function index(req, res){
   try {
@@ -17,8 +17,8 @@ async function create(req, res){
   }
   catch (err){    
     console.log(err)
-    res.status(500).json(err)
-  }
+      res.status(500).json(err)
+    }
 }
 
 export {

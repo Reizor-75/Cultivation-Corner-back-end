@@ -3,6 +3,7 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
 const orderSchema = new Schema({
+  recipient: { type: Schema.Types.ObjectId, ref: 'Profile'},
   orderNumber: { type: String, required: true },
   date: { type: Date, required: true },
   orderList: [{ type: Schema.Types.ObjectId, ref: 'Product'}],

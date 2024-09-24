@@ -2,7 +2,7 @@ import { Order } from '../models/order.js'
 
 async function index(req, res){
   try {
-    const order = await Order.find({}).populate(['recipient', 'orderList'])
+    const order = await Order.find({}).populate(['recipient'])
     res.status(200).json(order)
   } catch (error) {
     console.log(error)

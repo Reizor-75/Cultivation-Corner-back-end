@@ -6,9 +6,10 @@ import * as ordersCtrl from '../controllers/orders.js'
 const router = Router()
 
 /*---------- Public Routes ----------*/
-router.post('/newOrder', ordersCtrl.create)
+router.get('/', ordersCtrl.index)
 
 /*---------- Protected Routes ----------*/
-
+router.use(auth.decodeUserFromToken)
+router.post('/newOrder', auth.checkAuth, ordersCtrl.create)
 
 export { router }

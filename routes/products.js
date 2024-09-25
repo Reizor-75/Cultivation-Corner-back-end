@@ -7,6 +7,7 @@ const router = Router()
 
 /*---------- Public Routes ----------*/
 router.get('/', productsCtrl.index)
+router.get('/:productId', productsCtrl.show)
 
 /*---------- Protected Routes ----------*/
 router.use(auth.decodeUserFromToken)

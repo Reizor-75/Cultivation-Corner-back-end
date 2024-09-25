@@ -29,7 +29,23 @@ async function create(req, res){
   }
 }
 
+async function update(req, res){
+  try{
+    const order = await Order.findByIdAndUpdate(
+      req.params.orderId,
+      req.body,
+      { new: true }
+    )
+    res.status(200).json(order)
+  }
+  catch (err){    
+    console.log(err)
+    res.status(500).json(err)
+  }
+}
+
 export {
   index,
   create,
+  update,
 }

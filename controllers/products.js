@@ -21,6 +21,17 @@ async function create(req, res){
   }
 }
 
+async function show(req, res){
+  try {
+    const product = await Product.findById(req.params.productId)
+    res.status(200).json(product)
+  } 
+  catch (err) {
+    console.log(err)
+    res.status(500).json(err)
+  }
+}
+
 async function update(req, res){
   try{
     const product = await Product.findByIdAndUpdate(
@@ -50,6 +61,7 @@ async function deleteProduct(req, res){
 export {
   index,
   create,
+  show,
   update,
   deleteProduct as delete,
 }

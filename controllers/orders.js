@@ -3,7 +3,7 @@ import { Profile } from '../models/profile.js'
 
 async function index(req, res){
   try {
-    const order = await Order.find({}).populate(['recipient'])
+    const order = await Order.find({}).populate(['recipient', 'orderList'])
     res.status(200).json(order)
   } catch (error) {
     console.log(error)
@@ -13,6 +13,7 @@ async function index(req, res){
 
 async function create(req, res){
   try{
+    req.body.recipient = req.user.profile
     const order = await Order.create(req.body)
     const profile = await Profile.findByIdAndUpdate(
       req.user.profile,

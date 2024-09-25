@@ -11,5 +11,6 @@ router.get('/', ordersCtrl.index)
 /*---------- Protected Routes ----------*/
 router.use(auth.decodeUserFromToken)
 router.post('/newOrder', auth.checkAuth, ordersCtrl.create)
+router.put('/:orderId', auth.checkEmployee, ordersCtrl.update)
 
 export { router }

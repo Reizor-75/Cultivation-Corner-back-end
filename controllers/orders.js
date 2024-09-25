@@ -46,7 +46,7 @@ async function update(req, res){
 
 async function show(req, res){
   try{
-    const order = await Order.findById(req.paras.orderId).populate(['recipient', 'orderList'])
+    const order = await Order.findById(req.params.orderId).populate(['recipient', 'orderList'])
     res.status(200).json(order)
   }
   catch(err){

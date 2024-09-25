@@ -7,6 +7,7 @@ const router = Router()
 
 /*---------- Public Routes ----------*/
 router.get('/', ordersCtrl.index)
+router.get('/:orderId', ordersCtrl.show)
 
 /*---------- Protected Routes ----------*/
 router.use(auth.decodeUserFromToken)

@@ -7,10 +7,10 @@ const router = Router()
 
 /*---------- Public Routes ----------*/
 router.get('/', ordersCtrl.index)
-router.get('/:orderId', ordersCtrl.show)
 
 /*---------- Protected Routes ----------*/
 router.use(auth.decodeUserFromToken)
+router.get('/:orderId', auth.checkAuth, ordersCtrl.show)
 router.post('/newOrder', auth.checkAuth, ordersCtrl.create)
 router.put('/:orderId', auth.checkEmployee, ordersCtrl.update)
 

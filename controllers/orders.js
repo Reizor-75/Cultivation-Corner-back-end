@@ -44,8 +44,20 @@ async function update(req, res){
   }
 }
 
+async function show(req, res){
+  try{
+    const order = await Order.findById(req.paras.orderId).populate(['recipient', 'orderList'])
+    res.status(200).json(order)
+  }
+  catch(err){
+    console.log(err)
+    res.status(500).json(err)
+  }
+}
+
 export {
   index,
   create,
   update,
+  show,
 }

@@ -1,5 +1,6 @@
 import { Order } from '../models/order.js'
 import { Profile } from '../models/profile.js'
+import { Product } from '../models/product.js'
 
 async function index(req, res){
   try {
@@ -21,6 +22,12 @@ async function create(req, res){
       { new: true }
     )
     order.recipient = profile
+    for(const item in order.orderList){
+      const product = await Order.findById(item)
+      product.quanity--;
+      await product.save()
+    }
+
     res.status(201).json(order)
   }
   catch (err){    

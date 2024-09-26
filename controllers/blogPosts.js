@@ -10,6 +10,16 @@ async function index(req, res){
   }
 }
 
+async function create(req, res){
+  try {
+    const post = await BlogPost.create(req.body)
+    res.status(200).json(post)
+  } catch (err) {
+    console.log(err)
+    res.status(500).json(err)
+  }
+}
+
 export{
   index,
 }

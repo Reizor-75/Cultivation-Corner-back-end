@@ -12,5 +12,6 @@ router.get('/:postId', blogPostsCtrl.show)
 /*---------- Protected Routes ----------*/
 router.use(auth.decodeUserFromToken)
 router.post('/newPost', auth.checkAuth, blogPostsCtrl.create)
+router.put('/:postId', auth.checkAuth, blogPostsCtrl.update)
 
 export { router }

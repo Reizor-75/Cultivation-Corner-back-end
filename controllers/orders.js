@@ -23,7 +23,7 @@ async function create(req, res){
     )
     order.recipient = profile
     for(const item in order.orderList){
-      const product = await Order.findById(item)
+      const product = await Product.findById(item)
       product.quanity--;
       await product.save()
     }

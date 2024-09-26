@@ -20,7 +20,18 @@ async function create(req, res){
   }
 }
 
+async function show(req, res){
+  try{
+    const post = await BlogPost.findById(req.params.postId).populate(['author', 'productList'])
+    res.status(200).json(post)
+  } catch(err){
+    console.log(err)
+    res.status(500).json(err)
+  }
+}
+
 export{
   index,
   create,
+  show,
 }

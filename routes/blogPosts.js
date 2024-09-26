@@ -7,6 +7,7 @@ const router = Router()
 
 /*---------- Public Routes ----------*/
 router.get('/', blogPostsCtrl.index)
+router.get('/:postId', blogPostsCtrl.show)
 
 /*---------- Protected Routes ----------*/
 router.use(auth.decodeUserFromToken)

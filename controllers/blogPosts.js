@@ -44,9 +44,20 @@ async function update(req, res){
   }
 }
 
+async function deletePost(req, res){
+  try {
+    const post = await BlogPost.findByIdAndDelete(req.params.postId)
+    res.status(200).json(post)
+  } catch (err) {
+    console.log(err)
+    res.status(500).json(err)
+  }
+}
+
 export{
   index,
   create,
   show,
   update,
+  deletePost as delete,
 }

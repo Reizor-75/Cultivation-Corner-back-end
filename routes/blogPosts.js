@@ -6,6 +6,7 @@ import * as blogPostsCtrl from '../controllers/blogPosts.js'
 const router = Router()
 
 /*---------- Public Routes ----------*/
+router.get("/", blogPostsCtrl.index)
 
 /*---------- Protected Routes ----------*/
 router.use(auth.decodeUserFromToken)

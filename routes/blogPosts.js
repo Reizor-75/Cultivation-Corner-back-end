@@ -15,5 +15,6 @@ router.post('/newPost', auth.checkAuth, blogPostsCtrl.create)
 router.post('/newComment', auth.checkAuth, blogPostsCtrl.createComment)
 router.put('/:postId', auth.checkAuth, blogPostsCtrl.update)
 router.delete('/:postId', auth.checkAuth, blogPostsCtrl.delete)
+router.delete('/:postId/:commentId', auth.checkAuth, blogPostsCtrl.deleteComment)
 
 export { router }

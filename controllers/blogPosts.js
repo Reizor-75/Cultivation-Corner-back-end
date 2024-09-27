@@ -13,6 +13,7 @@ async function index(req, res){
 
 async function create(req, res){
   try {
+    req.body.author = req.user.profile
     const post = await BlogPost.create(req.body)
     res.status(200).json(post)
   } catch (err) {

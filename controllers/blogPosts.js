@@ -73,6 +73,18 @@ async function createComment(req, res) {
   }
 }
 
+async function deleteComment(req, res){
+  try {
+    const post = await BlogPost.findById(req.params.postId)
+    post.comments.remove({ _id: req.params.commentId })
+    await post.save()
+    res.status(200).json(post)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json(error)
+  }
+}
+
 export{
   index,
   create,
@@ -80,4 +92,5 @@ export{
   update,
   deletePost as delete,
   createComment,
+  deleteComment,
 }

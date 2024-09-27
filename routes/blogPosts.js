@@ -14,6 +14,7 @@ router.use(auth.decodeUserFromToken)
 router.post('/newPost', auth.checkAuth, blogPostsCtrl.create)
 router.post('/newComment', auth.checkAuth, blogPostsCtrl.createComment)
 router.put('/:postId', auth.checkAuth, blogPostsCtrl.update)
+router.put('/:postId/:commentId', auth.checkAuth, blogPostsCtrl.updateComment)
 router.delete('/:postId', auth.checkAuth, blogPostsCtrl.delete)
 router.delete('/:postId/:commentId', auth.checkAuth, blogPostsCtrl.deleteComment)
 

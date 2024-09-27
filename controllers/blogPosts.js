@@ -1,4 +1,5 @@
 import { BlogPost } from '../models/blogPost.js'
+import { Profile } from '../models/profile.js'
 
 async function index(req, res){
   try {
@@ -54,10 +55,28 @@ async function deletePost(req, res){
   }
 }
 
+async function createComment(req, res) {
+  try{
+    req.body.commenter = req.user.profile
+    const post = await BlogPost.findById(rew.params.postId)
+    post.comments.push(req.body)
+    await post.save()
+
+    const newComment = post.comments[post.comments.length - 1]
+    const profile = await Profile.findById(req.user.profile)
+    newComment.commenter = profile
+    res.status(201).json(newComment)
+  } catch (err){
+    console.log(err)
+    res.status(500).json(err)
+  }
+}
+
 export{
   index,
   create,
   show,
   update,
   deletePost as delete,
+  createComment,
 }

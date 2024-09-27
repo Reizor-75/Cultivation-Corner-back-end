@@ -79,9 +79,22 @@ async function deleteComment(req, res){
     post.comments.remove({ _id: req.params.commentId })
     await post.save()
     res.status(200).json(post)
-  } catch (error) {
-    console.log(error)
-    res.status(500).json(error)
+  } catch (err) {
+    console.log(err)
+    res.status(500).json(err)
+  }
+}
+
+async function updateComment(req, res){
+  try {
+    const post = await BlogPost.findById(req.params.postId)
+    const comment = post.comments.id(req.params.commentId)
+    comment = req.body
+    await post.save()
+    res.status(200).json(post)
+  } catch (err) {
+    console.log(err)
+    res.status(500).json(err)
   }
 }
 
@@ -93,4 +106,5 @@ export{
   deletePost as delete,
   createComment,
   deleteComment,
+  updateComment,
 }

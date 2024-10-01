@@ -30,4 +30,19 @@ async function addPhoto(req, res) {
   }
 }
 
-export { index, addPhoto }
+async function showEmployee(res, req){
+  try{
+    const employees = await Profile.find({role: {$gte: 500}})
+    res.status(201).json(employees)
+  }
+  catch(err){
+    console.log(err)
+    res.status(500).json(err)
+  }
+}
+
+export { 
+  index, 
+  addPhoto,
+  showEmployee,
+}

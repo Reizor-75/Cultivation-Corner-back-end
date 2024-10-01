@@ -30,18 +30,17 @@ async function addPhoto(req, res) {
   }
 }
 
-async function showEmployee(res, req){
-  try{
+async function showEmployee(req, res){
+  try {
     const employees = await Profile.find({role: {$gte: 500}})
-    res.status(201).json(employees)
-  }
-  catch(err){
+    res.json(employees)
+  } catch (err) {
     console.log(err)
     res.status(500).json(err)
   }
 }
 
-async function updateRole(res, req){
+async function updateRole(req, res){
   try{
     const employee = await Profile.findbyIdAndUpdate(
       req.params.profileId,

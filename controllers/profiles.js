@@ -42,11 +42,12 @@ async function showEmployee(req, res){
 
 async function updateRole(req, res){
   try{
-    const employee = await Profile.findbyIdAndUpdate(
+    const employee = await Profile.findByIdAndUpdate(
       req.params.profileId,
-      {$set: { role: req.body.role }},
+      req.body,
       { new: true }
     )
+    await employee.save()
     res.status(201).json(employee)
   }
   catch(err){

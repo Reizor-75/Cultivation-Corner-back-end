@@ -11,6 +11,6 @@ router.get('/aboutUs', profilesCtrl.showEmployee)
 router.use(decodeUserFromToken)
 router.get('/', checkAuth, profilesCtrl.index)
 router.put('/:id/add-photo', checkAuth, profilesCtrl.addPhoto)
-router.put(':profileId/updateRole', checkOwner, profilesCtrl.updateRole)
+router.put('/:profileId/updateRole', checkOwner, profilesCtrl.updateRole)
 
 export { router }

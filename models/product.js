@@ -11,7 +11,9 @@ const productSchema = new Schema({
     enum:['plant', 'soil', 'fertilizer', 'planters' ],
     default: 'plant'
   },
-  photo: String
+  photo: String,
+  description: String,
+  careInstructions: String
 },{
   timestamps: true,
 })

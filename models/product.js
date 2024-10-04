@@ -10,7 +10,8 @@ const productSchema = new Schema({
     type: String,
     enum:['plant', 'soil', 'fertilizer', 'planters' ],
     default: 'plant'
-  }
+  },
+  photo: String
 },{
   timestamps: true,
 })

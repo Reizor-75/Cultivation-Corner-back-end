@@ -21,7 +21,7 @@ function checkAuth(req, res, next) {
 
 function checkEmployee(req, res, next) {
   // Employee role === 500
-  if (req.user && req.user.role === 500 ) return next()
+  if (req.user && req.user.role >= 500 ) return next()
   return res.status(401).json({ err: 'Not Authorized' })
 }
 

@@ -12,7 +12,7 @@ const commentSchema= new Schema({
 
 const blogPostSchema = new Schema({
   author: { type: Schema.Types.ObjectId, ref: 'Profile'},
-  postTitle: { type: String, required: true },
+  title: { type: String, required: true },
   content: { type: String, required: true },
   productList: [{ type: Schema.Types.ObjectId, ref: 'Product'}],
   comments: [commentSchema],

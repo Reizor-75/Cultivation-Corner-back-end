@@ -8,7 +8,7 @@ const productSchema = new Schema({
   price: { type: Number, required: true},
   productType: {
     type: String,
-    enum:['plant', 'soil', 'fertilizer', 'planters' ],
+    enum:['plant', 'soil', 'fertilizer', 'planter', 'tool' ],
     default: 'plant'
   },
   photo: String,

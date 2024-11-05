@@ -59,7 +59,7 @@ async function deletePost(req, res){
 async function createComment(req, res) {
   try{
     req.body.commenter = req.user.profile
-    const post = await BlogPost.findById(rew.params.postId)
+    const post = await BlogPost.findById(req.params.postId)
     post.comments.push(req.body)
     await post.save()
 

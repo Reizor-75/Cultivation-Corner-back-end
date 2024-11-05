@@ -24,7 +24,7 @@ async function create(req, res){
 
 async function show(req, res){
   try{
-    const post = await BlogPost.findById(req.params.postId).populate(['author', 'productList'])
+    const post = await BlogPost.findById(req.params.postId).populate(['author', 'productList', 'comments.commenter'])
     res.status(200).json(post)
   } catch(err){
     console.log(err)

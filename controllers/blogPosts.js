@@ -3,7 +3,7 @@ import { Profile } from '../models/profile.js'
 
 async function index(req, res){
   try {
-    const post = await BlogPost.find({}).populate(['author', 'productList'])
+    const post = await BlogPost.find({}).populate(['author', 'productList']).sort({updatedAt:-1})
     res.status(200).json(post)
   } catch (error) {
     console.log(error)

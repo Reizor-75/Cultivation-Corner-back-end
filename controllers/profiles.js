@@ -56,9 +56,20 @@ async function updateRole(req, res){
   }
 }
 
+async function show(req, res){
+  try {
+    const profile = await Profile.findById(req.params.id)
+    res.json(profile)
+  } catch (err) {
+    console.log(err)
+    res.status(500).json(err)
+  }
+}
+
 export { 
   index, 
   addPhoto,
   showEmployee,
   updateRole,
+  show,
 }

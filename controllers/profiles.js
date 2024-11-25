@@ -42,11 +42,8 @@ async function showEmployee(req, res){
 
 async function updateRole(req, res){
   try{
-    const employee = await Profile.findByIdAndUpdate(
-      req.params.profileId,
-      req.body,
-      { new: true }
-    )
+    const employee = await Profile.findById(req.params.profileId)
+    employee.role = req.body.role
     await employee.save()
     res.status(201).json(employee)
   }
@@ -66,10 +63,27 @@ async function show(req, res){
   }
 }
 
+async function update(req, res){
+  try{
+    const profile = await Profile.findByIdAndUpdate(
+      req.params.profileId,
+      req.body,
+      { new: true }
+    )
+    await employee.save()
+    res.status(201).json(profile)
+  }
+  catch(err){
+    console.log(err)
+    res.status(500).json(err)
+  }
+}
+
 export { 
   index, 
   addPhoto,
   showEmployee,
   updateRole,
   show,
+  update,
 }

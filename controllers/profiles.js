@@ -65,12 +65,12 @@ async function show(req, res){
 
 async function update(req, res){
   try{
+    console.log(req.params.profileId)
     const profile = await Profile.findByIdAndUpdate(
       req.params.profileId,
       req.body,
       { new: true }
     )
-    await employee.save()
     res.status(201).json(profile)
   }
   catch(err){

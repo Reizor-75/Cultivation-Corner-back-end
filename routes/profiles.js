@@ -11,7 +11,7 @@ router.get('/aboutUs', profilesCtrl.showEmployee)
 router.use(decodeUserFromToken)
 router.get('/', checkAuth, profilesCtrl.index)
 router.get('/:profileId', checkAuth, profilesCtrl.show)
-router.put('/:productId', checkAuth, profilesCtrl.update)
+router.put('/:profileId', checkAuth, profilesCtrl.update)
 router.put('/:id/add-photo', checkAuth, profilesCtrl.addPhoto)
 router.put('/:profileId/updateRole', checkOwner, profilesCtrl.updateRole)
 
